@@ -20,16 +20,42 @@ const startTimer=(duration)=>{
     const displayMinute= minute < 10? "0"+ minute:minute;
     const displaySecond= secound < 10? "0"+ secound : secound;
    
-     secound < 6 ? timerDisplay.style.color="red ": secound;
-     secound > 6 ? timerDisplay.style.color="black ": secound;
+    // change color
+   
+    function changeOrage(){
+        secound < 6 ? timerDisplay.style.color="red": secound;
+      
+        secound == 20 ?  playAudio(): secound;
+        secound == 10?  playAudio(): secound;
+        secound == 0 ?  playAudio(): secound;
+       
+        
+    }
+    function changeRed(){
+       
+        //  secound > 6 ? timerDisplay.style.color="black ": secound;
+        //  secound > 11 ? timerDisplay.style.color="black ": secound;
+
+    }
+          secound > 11 ? timerDisplay.style.color="black ": secound;
+        //   secound > 11 ? playAudio(): secound;
+
+    timerDisplay.style.color=changeOrage();
+    timerDisplay.style.color=changeRed();
+    //  secound > 6 ? timerDisplay.style.color="black ": secound;
+
+    //  secound < 11 ? timerDisplay.style.color="orange ": secound;
+    //  secound > 11 ? timerDisplay.style.color="black ": secound;
 
     timerDisplay.textContent=displayMinute+':'+displaySecond;
     if(--timer <0){
+       
         clearInterval(timerInterval);
-        timerDisplay.textContent='Breath Out'
+        timerDisplay.textContent='Mahana Breath Out'
         setTimeout(() => {
             startTimer(timeLeft);
-             timerDisplay.textContent='Breath In'
+            playAudioTwo()
+             timerDisplay.textContent=' Mahana Breath In'
             
         },5000);
     }
@@ -47,7 +73,7 @@ const startTimer=(duration)=>{
 
 const stopTimer =()=>{
     clearInterval(timerInterval);
-    timerDisplay.textContent='Breat In'
+    timerDisplay.textContent='Mahana Breat In'
     isRunning=false;
 
 }
@@ -70,6 +96,15 @@ stopBtn.addEventListener("click",function(){
     isRunning=false;
   
 });
+const audio=document.getElementById('audio');
+const audioTwo=document.getElementById('audioTwo');
 
+function playAudio(){
+    audio.play()
+}
+
+function playAudioTwo(){
+    audioTwo.play()
+}
 
 
