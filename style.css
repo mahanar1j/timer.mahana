@@ -6,6 +6,9 @@
     font-style: italic;
     font-family: Arial,  sans-serif;
     background-color: rgba(255, 255, 255, 0.905);
+
+            display:none;
+        
 }
 .container{
     width: 350px;
